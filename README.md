@@ -1,0 +1,2 @@
+# goworkshop
+Go workshop repository
