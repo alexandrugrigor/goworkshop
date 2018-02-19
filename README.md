@@ -9,6 +9,21 @@
 1. import fmt package
 1. make a call to fmt.Println and print "Hello world, my name is <your_name_here>"
 ### 2. defining the data model
+1. create datamodel.go file
+1. create AuthorDto struct with the following fields:
+ - UUID string
+ - FirstName string
+ - LastName string
+ - Birthday string
+ - Death string
+1. create BookDto struct with the following fields:
+- UUID string
+- Title string
+- NoPages int
+- ReleaseDate string
+- Author AuthorDto
+4. create a slice of AuthorDto which will hold all authors in the system
+5. create a slice of BookDto which will hold all books in the system
 ### 3. add JSON marshalling
 ### 4. read sample data from files
 ### 5. start a web server, listening on a configured port
