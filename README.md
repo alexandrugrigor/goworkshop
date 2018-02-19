@@ -2,6 +2,12 @@
 
 # Part 1 - Write REST services with data loaded from files
 ### 1. hello world in GO
+1. create main directory
+1. create main.go file
+1. declare package main
+1. declare main function
+1. import fmt package
+1. make a call to fmt.Println and print "Hello world, my name is <your_name_here>"
 ### 2. defining the data model
 ### 3. add JSON marshalling
 ### 4. read sample data from files
