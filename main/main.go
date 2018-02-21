@@ -1,8 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"goworkshop/test"
+)
 
 func main() {
-	fmt.Println("hello world!")
-	fmt.Println("I am Sam")
+	var s = test.Square{
+		Rectangle: test.Rectangle{
+			Width:  10,
+			Length: 10,
+		},
+	}
+	fmt.Println(s.Test.Area())
 }
