@@ -2,17 +2,43 @@ package main
 
 import (
 	"fmt"
-	"goworkshop/test"
 )
 
 func main() {
-	var s = test.Square{
-		Rectangle: test.Rectangle{
-			Length: 10, Width: 10,
-		},
-
-		Color: "Red",
+	var a1 = AuthorDto{
+		UUID:      "1",
+		FirstName: "Dorinel",
+		Lastname:  "Panaite",
+		Birthday:  "08.06.1997",
+		Death:     "???",
 	}
 
-	fmt.Println(s.Rectangle.Area())
+	var a2 = AuthorDto{
+		UUID:      "2",
+		FirstName: "Dorinelll",
+		Lastname:  "Panaiteee",
+		Birthday:  "07.06.1997",
+		Death:     "???",
+	}
+
+	var b1 = BookDto{
+		UUID:        "book1",
+		Title:       "title1",
+		NoPages:     10,
+		ReleaseDate: "2017",
+		Author:      a1,
+	}
+
+	var b2 = BookDto{
+		UUID:        "book2",
+		Title:       "title2",
+		NoPages:     20,
+		ReleaseDate: "2016",
+		Author:      a2,
+	}
+
+	authors := [2]AuthorDto{a1, a2}
+	books := [2]BookDto{b1, b2}
+	fmt.Println(authors)
+	fmt.Println(books)
 }
