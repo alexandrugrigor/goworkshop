@@ -13,7 +13,7 @@ func TestStructs(t *testing.T) {
 	}
 
 	// 2. How to initialize?
-	p1 := Point{1, 2}
+	p1 := Point{1, 2} //si declara si initializeaza
 	fmt.Printf("\n2. p1 = %v\n", p1)
 
 	p2 := &Point{3, 4}
