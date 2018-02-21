@@ -25,6 +25,18 @@
 4. create a slice of AuthorDto which will hold all authors in the system
 5. create a slice of BookDto which will hold all books in the system
 ### 3. add JSON marshalling
+#### AuthorDto JSON mappings:
+* map **AuthorDto.UUID** field to **uuid** field in the resulting JSON
+* map **AuthorDto.FirstName** field to **firstName** field in the resulting JSON
+* map **AuthorDto.LastName** field to **lastName** field in the resulting JSON
+* map **AuthorDto.Birthday** field to **birthday** field in the resulting JSON
+* map **AuthorDto.Death** field to **death** field in the resulting JSON
+#### BookDto JSON mappings
+* map **BookDto.UUID** field to **uuid** field in the resulting JSON
+* map **BookDto.Title** field to **title** field in the resulting JSON
+* map **BookDto.NoPages** field to **noPages** field in the resulting JSON
+* map **BookDto.ReleaseDate** field to **releaseDate** field in the resulting JSON
+* map **BookDto.Author** field to **author** field in the resulting JSON
 ### 4. read sample data from files
 ### 5. start a web server, listening on a configured port
 ### 6. writing a simple REST endpoint
