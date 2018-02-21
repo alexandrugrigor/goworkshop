@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 )
 
@@ -39,6 +40,16 @@ func main() {
 
 	authors := [2]AuthorDto{a1, a2}
 	books := [2]BookDto{b1, b2}
+
+	b1json, _ := json.Marshal(b1)
+
 	fmt.Println(authors)
 	fmt.Println(books)
+	fmt.Println(b1json)
+
+	var b3 = new(BookDto)
+	error := json.Unmarshal(b1json, &b3)
+
+	fmt.Println(error)
+	fmt.Println(b3)
 }
