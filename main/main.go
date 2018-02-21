@@ -1,11 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	fmt.Println("hello world!")
-	fmt.Println("Catalin")
-	fmt.Println("Hi, my name is Alex")
-	fmt.Println("Hi, my name is Tibi")
-	fmt.Println("Hi, my name is Anda! :)")
+	var s = Square{
+		Length: 10,
+		Color:  "red",
+	}
+
+	fmt.Println(s)
+}
+
+// Square - the square struct
+type Square struct {
+	Length int // upper-case public, lower-case package-private
+	Color  string
 }
