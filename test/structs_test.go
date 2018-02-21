@@ -18,6 +18,7 @@ func TestStructs(t *testing.T) {
 
 	p2 := &Point{3, 4}
 	fmt.Printf("\n2. p2 = %v\n", p2)
+
 	// p2 initialization is equivalent with p3
 	p3 := new(Point)
 	*p3 = Point{5, 6}
