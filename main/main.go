@@ -2,19 +2,17 @@ package main
 
 import (
 	"fmt"
+	"goworkshop/test"
 )
 
 func main() {
-	var s = Square{
-		Length: 10,
-		Color:  "red",
+	var s = test.Square{
+		Rectangle: test.Rectangle{
+			Length: 10, Width: 10,
+		},
+
+		Color: "Red",
 	}
 
-	fmt.Println(s)
-}
-
-// Square - the square struct
-type Square struct {
-	Length int // upper-case public, lower-case package-private
-	Color  string
+	fmt.Println(s.Rectangle.Area())
 }
