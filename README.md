@@ -38,6 +38,20 @@
 * map **BookDto.ReleaseDate** field to **releaseDate** field in the resulting JSON
 * map **BookDto.Author** field to **author** field in the resulting JSON
 ### 4. read sample data from files
+1. create model package
+1. move datamodel.go in model folder
+1. create importer package
+1. create authors.json file in importer folder
+1. add an array of authors with sample data in JSON format
+1. create books.json file in importer folder
+1. add an array of books with sample data in JSON format
+1. create dataImporter.go file in importer folder
+1. import encoding/json package
+1. import io/ioutil
+1. create a function named ImportAuthors that reads authors.json file and return a slice of authors
+1. create a function named ImportBooks that reads the books.json file and returns a slice of books
+1. print all authors to the STDOUT
+1. print all books to the STDOUT
 ### 5. start a web server, listening on a configured port
 ### 6. writing a simple REST endpoint
 ### 7. implement all REST endpoints with data loaded from files
