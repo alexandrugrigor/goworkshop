@@ -15,7 +15,9 @@ func TestSlices(t *testing.T) {
 
 	// 2. How to initialize?
 	slice := []string{"a", "b", "c", "d"}
+
 	slice2 := make([]int, 3)
+
 	fmt.Printf("\n2. slice = %v\n", slice)
 	fmt.Printf("2. slice2 = %v\n", slice2)
 
@@ -27,13 +29,14 @@ func TestSlices(t *testing.T) {
 	fmt.Printf("\n4. slice[2] = %s\n", slice[2])
 
 	// 5. How to add an element?
-	slice = append(slice, "e")
+	slice = append(slice, "e", "f", "g")
 	fmt.Printf("5. slice[4] = %s\n", slice[4])
 
 	// 6. How to traverse?
 	fmt.Printf("\n6. traversing the slice:\n")
-	for index, value := range slice {
-		fmt.Printf("\tslice[%d]=%s\n", index, value)
+
+	for _, value := range slice {
+		fmt.Printf("\tslice]=%s\n", value)
 	}
 
 	// 7. How to remove an element?

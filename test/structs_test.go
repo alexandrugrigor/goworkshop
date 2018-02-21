@@ -5,23 +5,47 @@ import (
 	"testing"
 )
 
+// 1. How to declare?
+type Point struct {
+	X, Y int
+}
+
+func (p *Point) String() string {
+	return fmt.Sprintf("Point{x=%d, y=%d}", p.X, p.Y)
+}
+
+func (p Point) DoSomething() string {
+	return fmt.Sprintf("Point{x=%d, y=%d}", p.X, p.Y)
+}
+
+type MyInterface interface {
+	DoSomething() string
+}
+
+func PrintData(obj MyInterface) {
+	fmt.Println(obj.DoSomething())
+}
 func TestStructs(t *testing.T) {
-
-	// 1. How to declare?
-	type Point struct {
-		X, Y int
-	}
-
 	// 2. How to initialize?
-	p1 := Point{1, 2}
-	fmt.Printf("\n2. p1 = %v\n", p1)
+	p1 := Point{
+		X: 10,
+		Y: 10,
+	}
+	PrintData(p1)
+	fmt.Printf("\n0. p1 = %v\n", p1)
 
 	p2 := &Point{3, 4}
-	fmt.Printf("\n2. p2 = %v\n", p2)
+
+	fmt.Printf("\n1. p2 = %v\n", p2)
+
 	// p2 initialization is equivalent with p3
 	p3 := new(Point)
-	*p3 = Point{5, 6}
+
 	fmt.Printf("\n2. p3 = %v\n", p3)
+	p3.X = 5
+	p3.Y = 6
+	// *p3 = Point{5, 6}
+	fmt.Printf("\n3. p3 = %v\n", p3)
 
 	// 3. How to embedd struct types?
 	// Circle
