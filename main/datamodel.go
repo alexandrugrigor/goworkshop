@@ -2,20 +2,20 @@ package main
 
 //BookDto - The DTO used to access books
 type BookDto struct {
-	UUID        string
-	Title       string
-	NoPages     int
-	ReleaseDate string
-	Author      AuthorDto
+	UUID        string    `json:"uuid"`
+	Title       string    `json:"title"`
+	NoPages     int       `json:"noPages"`
+	ReleaseDate string    `json:"releaseDate"`
+	Author      AuthorDto `json:"author"`
 }
 
 //AuthorDto - The DTO used to access authors
 type AuthorDto struct {
-	UUID      string
-	FirstName string
-	LastName  string
-	Birthday  string
-	Death     string
+	UUID      string `json:"uuid"`
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
+	Birthday  string `json:"birthday"`
+	Death     string `json:"death"`
 }
 
 //Books - the list of available books
