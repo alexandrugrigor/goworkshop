@@ -1,11 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"../importer"
+	"../web"
+	"../model"
+)
 
 func main() {
-	fmt.Println("hello world!")
-	fmt.Println("Catalin")
-	fmt.Println("Hi, my name is Alex")
-	fmt.Println("Hi, my name is Tibi")
-	fmt.Println("Hi, my name is Anda! :)")
+	model.Authors = importer.ImportAuthors()
+	fmt.Printf("Imported authors are: %s\n", model.Authors)
+	model.Books = importer.ImportBooks()
+	fmt.Printf("Imported books are: %s\n", model.Books)
+	web.StartServer()
 }
