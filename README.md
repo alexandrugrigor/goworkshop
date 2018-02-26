@@ -61,6 +61,12 @@
 1. launch the web server on API_PORT port by calling **ListenAndServe**
 1. if the web server returns an error, exit the application
 ### 6. writing a simple REST endpoint
+1. change the path of the REST endpoint from /test to /books
+1. configure the handler to respond only to GET methods
+1. marshal the books array to JSON bytes
+1. convert the JSON bytes to string
+1. set the "Content-Type" response header to "application/json"
+1. when /books endpoint is hit, return all books previously loaded from the JSON file
 ### 7. implement all REST endpoints with data loaded from files
 
 # Part 2 - Add unit tests for all REST endpoints and create the persistence layer

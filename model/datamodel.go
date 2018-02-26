@@ -1,6 +1,8 @@
 package model
 
-import "fmt"
+import (
+	"fmt"
+)
 
 //BookDto - The DTO used to access books
 type BookDto struct {
@@ -30,7 +32,7 @@ func (book BookDto) String() string {
 }
 
 //Books - the list of available books
-var Books = []BookDto{}
+var Books []BookDto
 
 // Authors - the list of available authors
-var Authors = []AuthorDto{}
+var Authors []AuthorDto

@@ -3,11 +3,14 @@ package main
 import (
 	"fmt"
 	"../importer"
+	"../web"
+	"../model"
 )
 
 func main() {
-	var authors = importer.ImportAuthors()
-	fmt.Printf("Imported authors are: %s\n", authors)
-	var books = importer.ImportBooks()
-	fmt.Printf("Imported books are: %s\n", books)
+	model.Authors = importer.ImportAuthors()
+	fmt.Printf("Imported authors are: %s\n", model.Authors)
+	model.Books = importer.ImportBooks()
+	fmt.Printf("Imported books are: %s\n", model.Books)
+	web.StartServer()
 }
