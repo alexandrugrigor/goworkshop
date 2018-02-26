@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"fmt"
 	"os"
-	"../model"
+	"goworkshop/model"
 )
 
 func ImportAuthors() []model.AuthorDto {
