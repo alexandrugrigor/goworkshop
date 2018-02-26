@@ -1,11 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"../importer"
+)
 
 func main() {
-	fmt.Println("hello world!")
-	fmt.Println("Catalin")
-	fmt.Println("Hi, my name is Alex")
-	fmt.Println("Hi, my name is Tibi")
-	fmt.Println("Hi, my name is Anda! :)")
+	var authors = importer.ImportAuthors()
+	fmt.Printf("Imported authors are: %s\n", authors)
+	var books = importer.ImportBooks()
+	fmt.Printf("Imported books are: %s\n", books)
 }
