@@ -96,11 +96,31 @@
 1. gorm.Open should receive the following parameters: dialect, host, port, user, password, dbname, sslmode
 1. on the DBInstance set DB().SetMaxOpenConns, LogMode, SingularTable, AutoMigrate for Book and Author entities, add foreign constraint from Book to Author and add unique constraint on book title
 ### 9. add persistence mappings
+1. delete importer package
+1. remove importer references from main.go
+1. remove importer references from book_handlers.go
+1. remove importer references from author_handlers.go
+1. rename BookDto to Book and AuthroDto to Author
+1. create an Entity struct in datamodel.go file with UUID field
+1. add `gorm:"primary_key"` primary key annotation to the Entity.UUID field
+1. embed Entity struct in Book struct
+1. add `gorm:"ForeignKey:AuthorUUID"` foreign key annotation to the Book.Author field
+1. add `sql:"type:text REFERENCES author(uuid) ON DELETE CASCADE"` cascade delete annotation to the Book.AuthorUUID field
+1. embed Entity struct in the Author struct
 ### 10. add persistence services to retrieve data from db
+1. create datastore.go file in persistence package
+1. create GormDataStore struct with a field named DBInstance of a type representing a pointer to a gorm.DB
+1. create DataStore interface in datastore.go with all books and authors operations
+1. create a Store variable of DataStore type
+1. in persistence/config.go file initialize the store variable before returning the DBInstance
+1. create books_datastore.go file in persistence package
+1. create authors_datastore.go file in persistence package
+1. implement DataStore interface in books_datastore.go and authors_datastore.go files by creating functions with a pointer receiver to a gorm.DB type
 ### 11. switch from loading data from db instead of files
+1. in main.go init the persistence
+1. in web/book_handlers remove Books type and books variable
+1. in web/author_handlers remove Authors type and authors variable
+1. use methods on persistence.Store to work with Book and Author entities
 
-#Part 3 - Add error handling and logging, improve performance with Go routines
-### 12. add error handling
-### 13. add logging support
-### 14. create a configuration service for the application
-### 15. improve performance by handling requests async using Go routines
+#Part 3 - Add error handling and logging
+### 12 write unit tests for All REST endpoints using mocks for all external dependencies

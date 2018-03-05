@@ -41,12 +41,12 @@ func TestMaps(t *testing.T) {
 	delete(ages, "bob") // remove element ages["bob"]
 	fmt.Printf("7. ages = %v\n", ages)
 
-	authorsMap := make(map[string]model.AuthorDto)
-	authorsMap["1"] = model.AuthorDto{
+	authorsMap := make(map[string]model.Author)
+	authorsMap["1"] = model.Author{
 		UUID: "1",
 	}
 
-	if authorsMap["2"] == (model.AuthorDto{}){
+	if authorsMap["2"] == (model.Author{}){
 		fmt.Println("There is no author with uuid 2")
 	}
 }

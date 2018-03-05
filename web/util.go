@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"encoding/json"
 	"fmt"
+	"github.com/gorilla/mux"
 )
 
 func WriteJson(w http.ResponseWriter, data interface{}) {
@@ -15,3 +16,8 @@ func WriteJson(w http.ResponseWriter, data interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	fmt.Fprintln(w, string(jsonBytes))
 }
+
+func ExtractUuid(r *http.Request) string {
+	return mux.Vars(r)["uuid"]
+}
+

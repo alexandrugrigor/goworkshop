@@ -2,34 +2,32 @@ package model
 
 import "fmt"
 
-//Books - the list of available books
-var Books BooksList
-
-//BookDto - The DTO used to access books
-type BookDto struct {
-	UUID        string    `json:"uuid"`
-	Title       string    `json:"title"`
-	NoPages     int       `json:"noPages"`
-	ReleaseDate string    `json:"releaseDate"`
-	Author      AuthorDto `json:"author"`
+//Book - The DTO used to access books
+type Book struct {
+	Entity
+	Title       string `json:"title"`
+	NoPages     int    `json:"noPages"`
+	ReleaseDate string `json:"releaseDate"`
+	Author      Author `json:"author" gorm:"foreignkey:AuthorId"`
+	AuthorId    int    `json:"-"`
 }
 
-func (book BookDto) String() string {
-	return fmt.Sprintf("BookDto{UUID='%s', Title='%s', NoPages=%d, ReleaseDate='%s',Author=%s}",
+func (book Book) String() string {
+	return fmt.Sprintf("Book{UUID='%s', Title='%s', NoPages=%d, ReleaseDate='%s',Author=%s}",
 		book.UUID, book.Title, book.NoPages, book.ReleaseDate, book.Author)
 }
 
-//BooksList - A list of BookDto objects
-type BooksList []BookDto
+//BooksList - A list of Book objects
+type BooksList []Book
 
-func (b *BooksList) Get(bookUUID string) (BookDto, error) {
+func (b *BooksList) Get(bookUUID string) (Book, error) {
 	err := fmt.Errorf("could not find book by uuid %s", bookUUID)
 	for _, book := range *b {
 		if book.UUID == bookUUID {
 			return book, nil
 		}
 	}
-	return BookDto{}, err
+	return Book{}, err
 }
 
 func (b *BooksList) Delete(bookUUID string) error {
@@ -48,7 +46,7 @@ func (b *BooksList) Delete(bookUUID string) error {
 	return err
 }
 
-func (b *BooksList) Update(updatedBook BookDto) (BookDto, error) {
+func (b *BooksList) Update(updatedBook Book) (Book, error) {
 	var err = fmt.Errorf("could not find book by uuid %s", updatedBook.UUID)
 	var newBooks BooksList
 	for _, book := range *b {
@@ -65,8 +63,7 @@ func (b *BooksList) Update(updatedBook BookDto) (BookDto, error) {
 	return updatedBook, err
 }
 
-
 //Adds the given book into the list
-func (b *BooksList) Add(book BookDto){
+func (b *BooksList) Add(book Book) {
 	*b = append(*b, book)
 }
