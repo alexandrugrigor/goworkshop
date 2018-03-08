@@ -7,6 +7,9 @@ import (
 
 func (store *GormDataStore) CreateBook(book *model.Book) error {
 	var err error
+	if len(book.Author.UUID) == 0 {
+		return error.New("Relation must exist")
+	}
 	if book.Author, err = store.GetAuthor(book.Author.UUID); err != nil {
 		return err
 	} else {
