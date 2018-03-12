@@ -30,59 +30,59 @@ func (server *RestServer) initRoutes(){
 		Route{
 			Method:      "GET",
 			Pattern:     "/",
-			HandlerFunc: Index,
+			HandlerFunc: server.Index,
 		},
 		Route{
 			Method:      "GET",
 			Pattern:     booksBaseUrl,
-			HandlerFunc: GetAllBooks,
+			HandlerFunc: server.GetAllBooks,
 		},
 		Route{
 			Method:      "POST",
 			Pattern:     booksBaseUrl,
-			HandlerFunc: AddBook,
+			HandlerFunc: server.AddBook,
 		},
 		Route{
 			Method:      "GET",
 			Pattern:     bookByUuidUrl,
-			HandlerFunc: GetBookByUUID,
+			HandlerFunc: server.GetBookByUUID,
 		},
 		Route{
 			Method:      "DELETE",
 			Pattern:     bookByUuidUrl,
-			HandlerFunc: DeleteBookByUUID,
+			HandlerFunc: server.DeleteBookByUUID,
 		},
 		Route{
 			Method:      "PUT",
 			Pattern:     bookByUuidUrl,
-			HandlerFunc: UpdateBook,
+			HandlerFunc: server.UpdateBook,
 		},
 
 		//author_handlers
 		Route{
 			Method:      "GET",
 			Pattern:     authorBaseUrl,
-			HandlerFunc: GetAllAuthors,
+			HandlerFunc: server.GetAllAuthors,
 		},
 		Route{
 			Method:      "POST",
 			Pattern:     authorBaseUrl,
-			HandlerFunc: AddAuthor,
+			HandlerFunc: server.AddAuthor,
 		},
 		Route{
 			Method:      "GET",
 			Pattern:     authorByUuidUrl,
-			HandlerFunc: GetAuthorByUUID,
+			HandlerFunc: server.GetAuthorByUUID,
 		},
 		Route{
 			Method:      "DELETE",
 			Pattern:     authorByUuidUrl,
-			HandlerFunc: DeleteAuthorByUUID,
+			HandlerFunc: server.DeleteAuthorByUUID,
 		},
 		Route{
 			Method:      "PUT",
 			Pattern:     authorByUuidUrl,
-			HandlerFunc: UpdateAuthor,
+			HandlerFunc: server.UpdateAuthor,
 		},
 	}
 }

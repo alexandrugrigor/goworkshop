@@ -13,14 +13,14 @@ const (
 	UNIQUE_AUTHOR_UUID_CONSTRAINT = "author_uuid_unique"
 )
 
-func InitDB() (error) {
+func InitDB() (DataStore, error) {
 
 	DBInstance, err := gorm.Open("postgres", "host=localhost port=5432 user=dbadmin "+
 		"password=dbadmin dbname=workshop_db sslmode=disable")
 
 	if err != nil {
 		fmt.Printf("Error while aquiring db connection: %s", err)
-		return err
+		return nil, err
 	}
 	DBInstance.DB().SetMaxOpenConns(20)
 
@@ -44,8 +44,5 @@ func InitDB() (error) {
 	DBInstance.Table("author").AddUniqueIndex(UNIQUE_AUTHOR_UUID_CONSTRAINT, "uuid")
 
 	// init the dataStore
-	Store = &GormDataStore{
-		DBInstance: DBInstance,
-	}
-	return nil
+	return &GormDataStore{DBInstance: DBInstance}, nil
 }

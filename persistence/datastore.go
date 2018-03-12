@@ -5,8 +5,6 @@ import (
 	"goworkshop/model"
 )
 
-var Store DataStore
-
 type GormDataStore struct {
 	DBInstance *gorm.DB
 }

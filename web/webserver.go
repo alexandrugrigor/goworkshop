@@ -12,7 +12,7 @@ type RestServer struct {
 	Port   int
 	routes Routes
 	router *mux.Router
-	Store persistence.DataStore
+	Store *persistence.DataStore
 }
 
 func (server *RestServer) StartServer() {

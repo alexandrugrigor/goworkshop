@@ -6,12 +6,14 @@ import (
 )
 
 func main() {
-	if err := persistence.InitDB(); err != nil {
+	dataStore, err := persistence.InitDB()
+	if err != nil {
 		panic(err)
 	}
 
 	server := web.RestServer{
-		Port: 8080,
+		Port:  8080,
+		Store: &dataStore,
 	}
 
 	server.StartServer()

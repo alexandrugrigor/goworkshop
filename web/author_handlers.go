@@ -5,11 +5,10 @@ import (
 	"goworkshop/model"
 	"io/ioutil"
 	"encoding/json"
-	"goworkshop/persistence"
 )
 
-func GetAllAuthors(w http.ResponseWriter, _ *http.Request) error {
-	authors, err := persistence.Store.GetAuthors()
+func (server *RestServer) GetAllAuthors(w http.ResponseWriter, _ *http.Request) error {
+	authors, err := (*server.Store).GetAuthors()
 	if err != nil {
 		return err
 	}
@@ -17,9 +16,9 @@ func GetAllAuthors(w http.ResponseWriter, _ *http.Request) error {
 	return nil
 }
 
-func GetAuthorByUUID(w http.ResponseWriter, r *http.Request) error {
+func (server *RestServer) GetAuthorByUUID(w http.ResponseWriter, r *http.Request) error {
 	authorUUID := ExtractUuid(r)
-	if author, err := persistence.Store.GetAuthor(authorUUID); err != nil {
+	if author, err := (*server.Store).GetAuthor(authorUUID); err != nil {
 		return err
 	} else {
 		WriteJson(w, author)
@@ -27,9 +26,9 @@ func GetAuthorByUUID(w http.ResponseWriter, r *http.Request) error {
 	}
 }
 
-func DeleteAuthorByUUID(w http.ResponseWriter, r *http.Request) error {
+func (server *RestServer) DeleteAuthorByUUID(w http.ResponseWriter, r *http.Request) error {
 	authorUUID := ExtractUuid(r)
-	if err := persistence.Store.DeleteAuthor(authorUUID); err != nil {
+	if err := (*server.Store).DeleteAuthor(authorUUID); err != nil {
 		return err
 	} else {
 		WriteJson(w, struct{ Message string }{Message: "Deleted"})
@@ -37,7 +36,7 @@ func DeleteAuthorByUUID(w http.ResponseWriter, r *http.Request) error {
 	}
 }
 
-func AddAuthor(w http.ResponseWriter, r *http.Request) error {
+func (server *RestServer) AddAuthor(w http.ResponseWriter, r *http.Request) error {
 	var author model.Author
 	bytes, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -46,7 +45,7 @@ func AddAuthor(w http.ResponseWriter, r *http.Request) error {
 
 	if err := json.Unmarshal(bytes, &author); err != nil {
 		return err
-	} else if err := persistence.Store.CreateAuthor(&author); err != nil {
+	} else if err := (*server.Store).CreateAuthor(&author); err != nil {
 		return err
 	} else {
 		WriteJson(w, author)
@@ -55,7 +54,7 @@ func AddAuthor(w http.ResponseWriter, r *http.Request) error {
 
 }
 
-func UpdateAuthor(w http.ResponseWriter, r *http.Request) error {
+func (server *RestServer) UpdateAuthor(w http.ResponseWriter, r *http.Request) error {
 	authorUUID := ExtractUuid(r)
 	var author model.Author
 	bytes, err := ioutil.ReadAll(r.Body)
@@ -66,7 +65,7 @@ func UpdateAuthor(w http.ResponseWriter, r *http.Request) error {
 		return err
 	}
 
-	if err := persistence.Store.UpdateAuthor(authorUUID, &author); err != nil {
+	if err := (*server.Store).UpdateAuthor(authorUUID, &author); err != nil {
 		return err
 	} else {
 		WriteJson(w, author)
